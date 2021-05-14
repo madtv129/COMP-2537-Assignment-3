@@ -1,13 +1,35 @@
 const express = require('express')
+const mysql = require('mysql')
+const dotenv = require('dotenv')
 const app = express()
 
-const users = []
+//TEST DATABASE
+const db = mysql.createConnection({
+    host: process.env.databaseHost,
+    user: 'root',
+    password: '',
+    database: process.env.database
+})
+//http://localhost/phpmyadmin/
+
+db.connect( (error) => {
+    if(error) {
+        console.log(error)
+    } else {
+        console.log("DB Connected.")
+    }
+})
+
 app.set('view-engine', 'ejs')
 app.use(express.json())
 
 
 app.get('/', (req, res) => {
     res.render('index.ejs')
+})
+
+app.get('/login', (req, res) => {
+    res.render('login.ejs')
 })
 
 app.get('/users', (req, res) => {
