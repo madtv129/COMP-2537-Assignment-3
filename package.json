@@ -1,0 +1,28 @@
+{
+  "name": "comp2537assign3",
+  "version": "1.0.0",
+  "description": "Aidan Waterson\r Joshua Martinez\r Gavin Knoke\r Kelvin Lim",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madtv129/COMP-2537-Assignment-3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/madtv129/COMP-2537-Assignment-3/issues"
+  },
+  "homepage": "https://github.com/madtv129/COMP-2537-Assignment-3#readme"
+}
