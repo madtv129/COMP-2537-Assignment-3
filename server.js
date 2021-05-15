@@ -62,7 +62,7 @@ app.use(express.json())
 
 app.get('/', (req, res) => {
     res.render('index.hbs')
-    initalizeDB()
+    initializeDB()
 })
 
 app.get('/loggedin', (req, res) => {
@@ -79,29 +79,29 @@ app.post('/authen', (req, res) => {
     }
 })
 
-function auth(email, pwd) {
-    const {email, password} = req.body
+// function auth(email, pwd) {
+//     const {email, password} = req.body
 
-    if(!email || !password) {
-        return res.status(400).render('login', { 
-            message: 'Please provide email and password'
-        })
-    }
+//     if(!email || !password) {
+//         return res.status(400).render('login', { 
+//             message: 'Please provide email and password'
+//         })
+//     }
 
-    db.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], 
-    async (error, results) => {
-        if (error) {
-            console.log(error)
-        }
+//     db.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], 
+//     async (error, results) => {
+//         if (error) {
+//             console.log(error)
+//         }
         
-        if(!results || !password) {
-            res.status(401).render('login', {
-                message: 'Email or Password was incorrect'
-            })
-        } else {
-            const id = results[0].id
+//         if(!results || !password) {
+//             res.status(401).render('login', {
+//                 message: 'Email or Password was incorrect'
+//             })
+//         } else {
+//             const id = results[0].id
             
-        }
-    })
-}
+//         }
+//     })
+// }
 app.listen(3000)
