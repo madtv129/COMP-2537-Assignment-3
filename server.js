@@ -4,6 +4,7 @@ const mysql = require('mysql')
 const dotenv = require('dotenv')
 const app = express()
 const fs = require("fs")
+const { debugPort } = require('process')
 
 //pathings
 app.use('/css', express.static('assets/css'));
@@ -79,29 +80,24 @@ app.post('/authen', (req, res) => {
     }
 })
 
-// function auth(email, pwd) {
-//     const {email, password} = req.body
+app.post('/users/login', async (req, res) => {
+    const user = users.find(user => user.name = req.body.name)
+    if (user == null) {
+        return res.status(400).send('Cannot find user')
+    }
+    try {
+        if(await req.body.password == user.password) {
+            res.send('You\'ve successfully logged in')
+        }
+        else {
+            res.send('Username or Password was incorrect.')
+        }
+    } catch {
+        res.status(500).send()
+    }
+})
 
-//     if(!email || !password) {
-//         return res.status(400).render('login', { 
-//             message: 'Please provide email and password'
-//         })
-//     }
-
-//     db.query('SELECT * FROM user WHERE email = ? AND password = ?', [email, password], 
-//     async (error, results) => {
-//         if (error) {
-//             console.log(error)
-//         }
-        
-//         if(!results || !password) {
-//             res.status(401).render('login', {
-//                 message: 'Email or Password was incorrect'
-//             })
-//         } else {
-//             const id = results[0].id
-            
-//         }
-//     })
-// }
+function auth(email, pwd) {
+    
+}
 app.listen(3000)
