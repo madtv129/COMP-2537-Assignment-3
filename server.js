@@ -1,8 +1,16 @@
 const express = require('express')
+const session = require('express-session')
 const mysql = require('mysql')
 const dotenv = require('dotenv')
 const app = express()
+const fs = require("fs")
 
+//pathings
+app.use('/css', express.static('assets/css'));
+app.use('/img', express.static('assets/img'));
+
+app.set('view-engine', 'hbs')
+console.log(__dirname);
 //TEST DATABASE
 const db = mysql.createConnection({
     host: process.env.databaseHost,
@@ -20,16 +28,15 @@ db.connect( (error) => {
     }
 })
 
-app.set('view-engine', 'ejs')
 app.use(express.json())
 
 
 app.get('/', (req, res) => {
-    res.render('index.ejs')
+    res.render('index.hbs')
 })
 
 app.get('/login', (req, res) => {
-    res.render('login.ejs')
+    res.render('login.html')
 })
 
 app.get('/users', (req, res) => {

@@ -2,7 +2,7 @@
   "name": "comp2537assign3",
   "version": "1.0.0",
   "description": "Aidan Waterson\r Joshua Martinez\r Gavin Knoke\r Kelvin Lim",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "devStart": "nodemon server.js",
     "start": "node server.js"
@@ -12,7 +12,8 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "ejs": "^3.1.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "hbs": "^4.1.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
